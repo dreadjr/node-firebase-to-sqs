@@ -3,11 +3,30 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dreadjr/node-firebase-to-sqs"
+  },
+  "bugs": {
+    "url": "https://github.com/dreadjr/node-firebase-to-sqs/issues"
+  },
+  "contributors": [{
+    "name": "",
+    "email": "dreadjr@gmail.com"
+  }],
+  "keywords": [
+    "firebase",
+    "sqs",
+    "aws"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "dreadjr@gmail.com",
   "license": "ISC",
+  "preferGlobal": false,
+  "analyze": true,
+  "private": false,
   "dependencies": {
     "bluebird": "^2.10.2",
     "debug": "^2.2.0",
