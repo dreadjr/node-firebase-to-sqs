@@ -1,0 +1,17 @@
+{
+  "name": "firebase-to-sqs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dreadjr@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "debug": "^2.2.0",
+    "firebase": "^2.3.1",
+    "lodash": "^3.10.1"
+  }
+}
