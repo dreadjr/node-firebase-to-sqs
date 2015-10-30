@@ -1,6 +1,7 @@
 var AWS = require('aws-sdk');
 var Promise = require('bluebird');
 var Firebase = require('firebase');
+var _ = require('lodash');
 var debug = require('debug');
 var error = debug('firebase-to-sqs:error');
 var log = debug('firebase-to-sqs:error');
