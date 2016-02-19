@@ -91,7 +91,7 @@ function factory(func) {
 
       .catch(function(err) {
         error(err, err.stack);
-        context.fail(error);
+        context.fail(err);
       })
       .then(function() {
         context.done();
