@@ -4,14 +4,14 @@ var Firebase = require('firebase');
 var _ = require('lodash');
 var debug = require('debug');
 var error = debug('firebase-to-sqs:error');
-var log = debug('firebase-to-sqs:error');
+var log = debug('firebase-to-sqs:log');
 
 
 function submitToSqsBatch(params) {
   //var params = {
   //  Entries: _.map(jobs, function(job, idx) {
   //    return {
-  //      Id: job.msg.search._id,
+  //      Id: job.msg._id,
   //      MessageBody: JSON.stringify(job.msg)
   //    }
   //  }),
@@ -59,12 +59,12 @@ function mapToSqsBatch(records) {
   var chain = _.chain(records)
     .groupBy('queue')
     .map(function(v, k) {
-      return _.chunk(v, max).map(function (c) {
+      return _.chunk(v, max).map(function (c, cIdx) {
         return {
           QueueUrl: queueUrl(k),
           Entries: _.map(c, function (job, idx) {
             return {
-              Id: job.msg.search._id,
+              Id: job.msg._id || ((max * cIdx) + idx).toString(),
               MessageBody: JSON.stringify(job.msg)
             };
           })
