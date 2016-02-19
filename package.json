@@ -1,6 +1,6 @@
 {
   "name": "firebase-to-sqs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "repository": {
@@ -10,10 +10,12 @@
   "bugs": {
     "url": "https://github.com/dreadjr/node-firebase-to-sqs/issues"
   },
-  "contributors": [{
-    "name": "",
-    "email": "dreadjr@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "",
+      "email": "dreadjr@gmail.com"
+    }
+  ],
   "keywords": [
     "firebase",
     "sqs",
