@@ -79,10 +79,9 @@ function mapToSqsBatch(records) {
 function factory(func) {
   var sqs = new AWS.SQS();
   var fb = new Firebase(process.env.FIREBASE_URL);
-  var fbAuth = Promise.promisify(fb.authWithCustomToken, fb);
 
   return function(event, context) {
-    fbAuth(process.env.FIREBASE_SECRET)
+    Promise.resolve(fb.authWithCustomToken(process.env.FIREBASE_SECRET))
       .then(function(authData) {
         return func.call({ firebase: fb}, event);
       })
