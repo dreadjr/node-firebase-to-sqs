@@ -77,25 +77,17 @@ function mapToSqsBatch(records) {
 }
 
 function factory(func) {
-  var sqs = new AWS.SQS();
-  var fb = new Firebase(process.env.FIREBASE_URL);
-
   return function(event, context) {
-    Promise.resolve(fb.authWithCustomToken(process.env.FIREBASE_SECRET))
+    var sqs = new AWS.SQS();
+    var fb = new Firebase(process.env.FIREBASE_URL);
+
+    return Promise.resolve(fb.authWithCustomToken(process.env.FIREBASE_SECRET))
       .then(function(authData) {
         return func.call({ firebase: fb}, event);
       })
       .then(mapToSqsBatch)
       .bind({ sqs: sqs})
-      .map(submitToSqsBatch)
-
-      .catch(function(err) {
-        error(err, err.stack);
-        context.fail(err);
-      })
-      .then(function() {
-        context.done();
-      });
+      .map(submitToSqsBatch);
   };
 }
 
