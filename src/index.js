@@ -33,13 +33,15 @@ function submitToSqsBatch(params) {
 }
 
 function submitToSqs(job) {
+  var self = this;
+
   var params = {
     MessageBody: JSON.stringify(job.msg),
     QueueUrl: queueUrl(job.queue)
   };
 
   return new Promise(function(resolve, reject) {
-    sqs.sendMessage(params, function (err, data) {
+    self.sqs.sendMessage(params, function (err, data) {
       if (err) {
         return reject(err);
       }
@@ -49,12 +51,12 @@ function submitToSqs(job) {
   });
 }
 
+function queueUrl(queue) {
+  return process.env.AWS_QUEUE_PREFIX + queue;
+}
+
 function mapToSqsBatch(records) {
   var max = 10;
-
-  function queueUrl(queue) {
-    return process.env.AWS_QUEUE_PREFIX + queue;
-  }
 
   var chain = _.chain(records)
     .groupBy('queue')
@@ -96,5 +98,6 @@ module.exports = {
 
   submitToSqsBatch: submitToSqsBatch,
   submitToSqs: submitToSqs,
-  mapToSqsBatch: mapToSqsBatch
+  mapToSqsBatch: mapToSqsBatch,
+  queueUrl: queueUrl
 };

@@ -2,7 +2,13 @@
   "name": "firebase-to-sqs",
   "version": "0.0.5",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/dreadjr/node-firebase-to-sqs"
@@ -10,29 +16,24 @@
   "bugs": {
     "url": "https://github.com/dreadjr/node-firebase-to-sqs/issues"
   },
-  "contributors": [
-    {
-      "name": "",
-      "email": "dreadjr@gmail.com"
-    }
-  ],
   "keywords": [
     "firebase",
     "sqs",
     "aws"
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "dreadjr@gmail.com",
   "license": "ISC",
   "preferGlobal": false,
   "analyze": true,
   "private": false,
   "dependencies": {
-    "bluebird": "^3.3.1",
+    "aws-sdk": "^2.7.16",
+    "bluebird": "^3.4.6",
     "debug": "^2.2.0",
     "firebase": "^2.4.1",
     "lodash": "^4.5.0"
+  },
+  "devDependencies": {
+    "jest": "^18.0.0"
   }
 }
